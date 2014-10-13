@@ -28,6 +28,10 @@ console.log(matrix);
   	];
  */
 ````
+### Installation
+````javascript
+npm install matrix-rotate
+````
 
 #### Preconditions
 * Matrices are square (it cannot rotate a non-square matrix).
