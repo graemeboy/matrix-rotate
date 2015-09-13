@@ -1,28 +1,44 @@
-var rotator = require('../lib/rotateMatrix.js'),
-	assert = require('assert'),
-	givenMatrix,
-	correctRotated,
-	moduleOutput;
+var rotator = require('../lib/rotateMatrix.js');
+var assert = require('assert');
 
-givenMatrix = [
-	[1,2,3,4],
-	[5,6,7,8],
-	[9,10,11,12],
-	[13,14,15,16]
-];
+// Immediately invoked.
+(function runTests() {
+    var input;
+    var moduleOutput;
 
-correctRotated = [ 
-	[ 13, 9, 5, 1 ],
-  	[ 14, 10, 6, 2 ],
-  	[ 15, 11, 7, 3 ],
-  	[ 16, 12, 8, 4 ] 
-  ];
+    examples = [
+        [
+    	   [1,2,3,4],
+    	   [5,6,7,8],
+    	   [9,10,11,12],
+    	   [13,14,15,16]
+        ],
+        [
+            [0, 0, 1],
+            [0, 0, 0],
+            [0, 0, 0]
+        ]
+    ];
 
-runTest(givenMatrix, correctRotated, 'Simple 4x4 array');
+    solutions = [ 
+        [
+    	   [ 13, 9, 5, 1 ],
+           [ 14, 10, 6, 2 ],
+           [ 15, 11, 7, 3 ],
+           [ 16, 12, 8, 4 ] 
+        ],
+        [
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 1]
+        ]
+      ];
 
-function runTest(givenMatrix, correctRotated, msg) {
-	moduleOutput = rotator(givenMatrix);
-	assert.deepEqual(moduleOutput, correctRotated, msg);
-}
+    
 
-
+    for (var i = 0; i < examples.length; i++) {
+        input = examples[i];
+        moduleOutput = rotator(input);
+        assert.deepEqual(moduleOutput, solutions[i], 'example ' + i);
+    }
+}());
